@@ -1,0 +1,90 @@
+sudo apt-get update
+
+sudo apt-get install -y \
+
+tree \
+
+vim \
+
+zip \
+
+git \
+
+unzip \
+
+php8.1-fpm \
+
+php8.1-mysql \
+
+php8.1-xml \
+
+php8.1-curl \
+
+php8.1-mbstring \
+
+php8.1-bcmath \
+
+php8.1-common \
+
+mysql-server \
+
+nginx
+
+curl https://getcomposer.org/installer -o /tmp/composer-setup.php 
+
+sudo php /tmp/composer-setup.php install --install-dir=/usr/local/bin --filename=composer 
+
+mkdir application
+
+cd application
+
+composer create-project --prefer-dist laravel/laravel .
+
+composer require laravel/ui 
+
+composer require laravelcollective/html
+
+composer require livewire/livewire
+
+php artisan ui bootstrap --auth 
+
+cd resources/views 
+
+mkdir pages articles dashboard partials 
+
+cd partials
+
+touch navbar.blade.php footer.blade.php search.blade.php
+cd ..
+
+cd pages 
+
+touch index.blade.php about.blade.php policy.blade.php 
+cd ..
+
+mv welcome.blade.php pages 
+
+cd articles 
+touch index.blade.php create.blade.php show.blade.php edit.blade.php search.blade.php
+
+cd ..
+
+cd dashboard 
+touch setting.blade.php profile.blade.php 
+cd ..
+mv home.blade.php dashboard 
+
+cd dashboard 
+mv home.blade.php index.blade.php 
+
+cd ..
+
+cd ../..
+php artisan make:controller PagesController 
+php artisan make:model Article -mcf
+
+cd ~/application
+cd resources/views 
+tree 
+
+
